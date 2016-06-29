@@ -187,15 +187,14 @@ class LSystem:
         '''
         *   Unit test for LSystem class.
         '''
-        myLSys = LSystem()
-        myLSys.NewRule("F=F+L-FF+F+FF+FL+FF-L+FF-F-FF-FL-FFF")
-        myLSys.NewRule("L=LLLLLL")
-        myLSys.NewRule("+=90")
-        myLSys.NewRule("-=90")
-        myLSys.SetAxiom("F+F+F+F")
-        myLSys.GenerateLSystem(3)
-        myLSys.GenerateLines((320, 480), 3 * math.pi / 2, 4)
-        myLSys.PygameDraw((1024, 768), (255, 0, 0))
+        ls = LSystem()
+        ls.NewRule("F=F-F++F-F")
+        ls.NewRule("+=60")
+        ls.NewRule("-=60")
+        ls.SetAxiom("-F++F++F")
+        ls.GenerateLSystem(5)
+        ls.GenerateLines((320,480), 0, 4)
+        ls.PygameDraw((1024,768),(255,0,0))
         
 if __name__ == '__main__':
     LSystem.UnitTest()
@@ -221,4 +220,15 @@ myLSys.SetAxiom("F+F+F+F")
 myLSys.GenerateLSystem(3)
 myLSys.GenerateLines((320, 480), 3 * math.pi / 2, 4)
 myLSys.PygameDraw((1024, 768), (255, 0, 0))
+'''
+
+''' Generate Koch Snowflake
+ls = LSystem()
+ls.NewRule("F=F-F++F-F")
+ls.NewRule("+=60")
+ls.NewRule("-=60")
+ls.SetAxiom("-F++F++F")
+ls.GenerateLSystem(5)
+ls.GenerateLines((320,480), 0, 4)
+ls.PygameDraw((1024,768),(255,0,0))
 '''
